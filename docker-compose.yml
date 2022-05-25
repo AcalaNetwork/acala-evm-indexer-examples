@@ -18,15 +18,15 @@ services:
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
       postgres-url: http://postgres:5431
-      ethereum: 'mainnet:http://host.docker.internal:8545'
+      ethereum: 'acala:http://host.docker.internal:8545'
       GRAPH_LOG: info
 
   ipfs:
     image: ipfs/go-ipfs:v0.4.23
     ports:
       - '5001:5001'
-    volumes:
-      - ./data/ipfs:/data/ipfs
+    # volumes:
+    #   - ./data/ipfs:/data/ipfs
 
   postgres:
     image: postgres
@@ -37,5 +37,5 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: graph-node
-    volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+    # volumes:
+    #   - ./data/postgres:/var/lib/postgresql/data

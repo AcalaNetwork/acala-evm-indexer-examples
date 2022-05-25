@@ -2,13 +2,20 @@
   "name": "examplesubgraph",
   "version": "0.1.0",
   "scripts": {
-    "build-contract": "solc contracts/Gravity.sol --abi -o abis --overwrite && solc contracts/Gravity.sol --bin -o bin --overwrite",
-    "create": "graph create graphprotocol/examplesubgraph --node https://api.thegraph.com/deploy/",
-    "create-local": "graph create graphprotocol/examplesubgraph --node http://127.0.0.1:8020",
+    "auth": "graph auth https://api.thegraph.com/deploy/",
+    "clean": "rm -rf data/ generated/ build/ temp/ lib/ network.json",
+    "run-all": "yarn build-all && yarn deploy-all",
+    "build-all": "yarn clean && yarn build-contract && yarn codegen && yarn build-graph",
+    "deploy-all": "yarn deploy-contract && yarn create-local && yarn deploy-local",
+    "build-contract": "truffle compile",
+    "deploy-contract": "truffle migrate --network mandala --reset",
     "codegen": "graph codegen",
-    "build": "graph build",
-    "deploy": "graph deploy graphprotocol/examplesubgraph --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
-    "deploy-local": "graph deploy graphprotocol/examplesubgraph --ipfs http://127.0.0.1:5001 --node http://127.0.0.1:8020"
+    "build-graph": "graph build",
+    "create": "graph create acala/examplesubgraph --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create acala/examplesubgraph --node http://127.0.0.1:8020",
+    "remove-local": "graph remove acala/examplesubgraph --node http://127.0.0.1:8020",
+    "deploy": "graph deploy acala/examplesubgraph --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-local": "graph deploy acala/examplesubgraph --ipfs http://127.0.0.1:5001 --node http://127.0.0.1:8020"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.28.1",

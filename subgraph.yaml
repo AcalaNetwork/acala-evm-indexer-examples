@@ -1,12 +1,12 @@
 specVersion: 0.0.2
-description: Gravatar for Ethereum
-repository: https://github.com/graphprotocol/example-subgraph
+description: Gravatar Subgraph for Acala EVM+
+repository: https://github.com/AcalaNetwork/subgraph-example
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: Gravity
-    network: mainnet
+    network: acala
     source:
       address: '0xf80A32A835F79D7787E8a8ee5721D0fEaFd78108'
       abi: Gravity
