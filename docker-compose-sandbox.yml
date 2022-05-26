@@ -1,0 +1,33 @@
+version: '3'
+services:
+  graph-node:
+    image: graphprotocol/graph-node:latest
+    ports:
+      - '8000:8000'
+      - '8001:8001'
+      - '8020:8020'
+      - '8030:8030'
+      - '8040:8040'
+    depends_on:
+      - postgres
+    environment:
+      postgres_host: postgres
+      postgres_user: postgres
+      postgres_pass: postgres
+      postgres_db: graph-node
+      ipfs: 'https://api.thegraph.com/ipfs/'
+      postgres-url: http://postgres:5431
+      ethereum: 'acala:https://tc7-eth.aca-dev.network'
+      GRAPH_LOG: info
+
+  postgres:
+    image: postgres
+    ports:
+      - '5431:5431'
+    command: ["postgres", "-cshared_preload_libraries=pg_stat_statements"]
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: graph-node
+    # volumes:
+    #   - ./data/postgres:/var/lib/postgresql/data

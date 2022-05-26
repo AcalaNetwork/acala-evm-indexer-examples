@@ -19,7 +19,7 @@ yarn build
 docker compose up
 
 ## in another tab
-LOCAL_MODE=1 SUBQL_URL=http://localhost:3001 npx @acala-network/eth-rpc-adapter@^2.4.12`
+LOCAL_MODE=1 SUBQL_URL=http://localhost:3001 npx @acala-network/eth-rpc-adapter@^2.4.12
 ```
 
 ### run a graph node and ipfs gateway locally

@@ -9,6 +9,7 @@ dataSources:
     network: acala
     source:
       address: '0xf80A32A835F79D7787E8a8ee5721D0fEaFd78108'
+      # address: '0x2c38CA90C26ed5a8749575aE40c2085BC7224f4E'   # mandala
       abi: Gravity
     mapping:
       kind: ethereum/events
