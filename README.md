@@ -9,7 +9,7 @@ wish to learn more about building smart contracts within Acala EVM+, please refe
 
 ## Setup
 
-In order to be able to run the exapmle, we need to run the local network first and then spin up the
+In order to be able to run the example, we need to run the local network first and then spin up the
 `graph-node` stack.
 
 ### Spin up the local development network
@@ -64,7 +64,7 @@ Cloning this repository gives access to the `Gravity` smart contract as well as 
 needed to deploy it. The `truffle.js` contains the required network configuration and the
 configuration files for a local subgraph node are included as well.
 
-To install the required dependecies simply use:
+To install the required dependencies simply use:
 
 ```shell
 yarn
@@ -88,8 +88,8 @@ from other subgraph definitions. You can learn more about subgraph definitions i
 [documentation](https://thegraph.com/docs/en/developer/create-subgraph-hosted/#the-subgraph-manifest).
 
 The `Gravatar` is defined in the [`schema.graphql`](./schema.graphql) and doesn't differ from any
-schema designed for another environment. If you wish to learn more abot building schemas, you can do
-so [here](https://thegraph.com/docs/en/developer/create-subgraph-hosted/#defining-entities).
+schema designed for another environment. If you wish to learn more about building schemas, you can
+do so [here](https://thegraph.com/docs/en/developer/create-subgraph-hosted/#defining-entities).
 
 The subgraph will live in the docker along with docker-hosted IPFS and Postgres. You can check out
 how the all of them connect to each other and to the already-running local development network in
