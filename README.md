@@ -149,7 +149,7 @@ To be able to easily build the smart contract as well as deploy it, `build-contr
     "deploy-contract": "truffle migrate --network mandala --reset"
 ```
 
-Running these scripts should succecssfully deploy the smart contract:
+Running these scripts should succecssfully deploy the smart contract and populate the gravatars:
 
 ```shell
 yarn clean             #optional
