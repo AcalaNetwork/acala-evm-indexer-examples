@@ -48,7 +48,7 @@ yarn deploy --network karuraTestnet
 yarn call --network karuraTestnet
 ```
 
-#### query the data
+## query the data
 
 Open your browser and head to `http://localhost:3000`.
 
@@ -107,3 +107,6 @@ result should look like this
   }
 }
 ```
+
+## publish to managed service
+After everything works locally, we can publish this project to the subquery [managed service](https://academy.subquery.network/run_publish/publish.html#requirements) for prod.

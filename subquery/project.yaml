@@ -20,8 +20,9 @@ network:
   chainId: '596'
 
   # ETH RPC endpoint (not substrate url!!)
-  # https://evmdocs.acala.network/network/network-configuration
-  endpoint: "https://eth-rpc-karura-testnet.aca-staging.network"
+  # all rpc endpoints can be found here: https://evmdocs.acala.network/network/network-configuration
+  # use https also works, but wss might be a little faster
+  endpoint: "wss://eth-rpc-karura-testnet.aca-staging.network"
 
   # TODO: acala dictionary
   # dictionary: "https://gx.api.subquery.network/sq/subquery/eth-dictionary"
