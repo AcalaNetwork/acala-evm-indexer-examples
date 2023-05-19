@@ -6,15 +6,12 @@ const config: HardhatUserConfig = {
   networks: {
     karuraTestnet: {
       accounts: {
-        mnemonic: 'fox sight canyon orphan hotel grow hedgehog build bless august weather swarm',
+        mnemonic: 'your mnemonic',
         path: 'm/44\'/60\'/0\'/0',
       },
       chainId: 596,
       url: 'https://eth-rpc-karura-testnet.aca-staging.network',
     },
-  },
-  mocha: {
-    timeout: 987654321,
   },
 };
 

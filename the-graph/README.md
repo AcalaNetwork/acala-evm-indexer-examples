@@ -1,4 +1,6 @@
-# Using Subgraph with Acala EVM+
+# Acala EVM+ Indexer Example - The Graph
+
+**Using the graph is deprecated, since there is no integration with the graph managed service yet. You will need to manage your own graph node service, which can be time consuming.**
 
 The Subgraph that we will establish in this example demonstrates how to establish your own Subgraph
 for projects running in the Acala EVM+.
