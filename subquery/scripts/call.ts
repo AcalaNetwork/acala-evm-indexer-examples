@@ -7,11 +7,11 @@ async function main() {
   const GravatarRegistry = await ethers.getContractFactory("GravatarRegistry");
   const registry = GravatarRegistry.attach(GRAVITAR_REGISTRY_ADDR);
 
-  // await (await registry.connect(wallets[0]).createGravatar('AAAAA', 'https://example/AAAAA.png')).wait();
-  // await (await registry.connect(wallets[1]).createGravatar('BBBBB', 'https://example/BBBBB.jpg')).wait();
-  // await (await registry.connect(wallets[2]).createGravatar('CCCCC', 'https://example/CCCCC.jpg')).wait();
+  await (await registry.connect(wallets[0]).createGravatar('AAAAA', 'https://example/AAAAA.png')).wait();
+  await (await registry.connect(wallets[1]).createGravatar('BBBBB', 'https://example/BBBBB.jpg')).wait();
+  await (await registry.connect(wallets[2]).createGravatar('CCCCC', 'https://example/CCCCC.jpg')).wait();
 
-  // console.log('create gravitars finished!');
+  console.log('create gravitars finished!');
 
   await (await registry.connect(wallets[0]).updateGravatarName('aaaaa')).wait();
   await (await registry.connect(wallets[1]).updateGravatarName('bbbbb')).wait();

@@ -2,6 +2,7 @@ version: "3"
 
 services:
   postgres:
+    # custom build with Btree_gist extension to support historical data
     build:
       context: .
       dockerfile: ./docker/pg-Dockerfile

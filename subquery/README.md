@@ -1,8 +1,22 @@
-# Acala EVM+ Indexer Example - Subquery 
+# Acala EVM+ Indexer Example - Subquery
+
+This is a basic example of indexing Acala EVM+ data using subquery. It indexes Gravitars on Karura Testnet from it's logs.
+
+For more documentations please refer to the [subquery evm doc.](https://academy.subquery.network/quickstart/quickstart_chains/ethereum-gravatar.html)
 ## run evm subquery on an already deployed Avatar contract
-start a subquery stack
+install deps
 ```
-docker compose up
+yarn --immutable 
+```
+
+build subquery
+```
+yarn build
+```
+
+start the whole evm subquery stack
+```
+yarn start:docker
 ```
 
 should see something like this

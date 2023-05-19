@@ -1,27 +1,17 @@
 {
-  "name": "subquery-example-gravatar",
+  "name": "acala-evm-subquery-example-gravatar",
   "version": "0.0.1",
-  "description": "This project can be use as a starting point for developing your new Ethereum SubQuery project, it indexes all Gravatars on Ethereum",
+  "description": "",
   "main": "dist/index.js",
   "scripts": {
     "compile": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts",
     "call": "hardhat run scripts/call.ts",
-    "build": "subql build",
     "codegen": "subql codegen",
-    "start:docker": "docker-compose pull && docker-compose up --remove-orphans",
-    "dev": "subql codegen && subql build && docker-compose pull && docker-compose up --remove-orphans",
-    "prepack": "rm -rf dist && npm run build",
-    "test": "jest"
+    "build": "yarn codegen && subql build",
+    "start": "docker-compose pull && docker-compose up --remove-orphans"
   },
-  "homepage": "https://github.com/subquery/subquery-example-gravatar",
-  "repository": "github:subquery/subquery-example-gravatar",
-  "files": [
-    "dist",
-    "schema.graphql",
-    "project.yaml"
-  ],
-  "author": "SubQuery Team",
+  "repository": "https://github.com/AcalaNetwork/acala-evm-indexer-examples",
   "license": "MIT",
   "dependencies": {
     "@subql/common": "latest",
