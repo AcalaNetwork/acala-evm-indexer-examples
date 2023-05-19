@@ -16,7 +16,7 @@ yarn build
 
 start the whole evm subquery stack
 ```
-yarn start:docker
+yarn start
 ```
 
 should see something like this
