@@ -1,0 +1,52 @@
+specVersion: "1.0.0"
+
+name: "acala-evm-subquery-example-gravatar"
+version: "0.0.1"
+runner:
+  node:
+    name: "@subql/node-ethereum"
+    version: "*"
+  query:
+    name: "@subql/query"
+    version: "*"
+description: "This project can be used as a starting point for developing your new Acala SubQuery project, it indexes all Gravatars on karura testnet EVM+"
+repository: "https://github.com/subquery/eth-gravatar"
+
+schema:
+  file: "./schema.graphql"
+
+network:
+  # chainId is the EVM Chain ID, for karura testnet this is 596
+  chainId: '596'
+
+  # ETH RPC endpoint (not substrate url!!)
+  # https://evmdocs.acala.network/network/network-configuration
+  endpoint: "https://eth-rpc-karura-testnet.aca-staging.network"
+
+  # TODO: acala dictionary
+  # dictionary: "https://gx.api.subquery.network/sq/subquery/eth-dictionary"
+
+dataSources:
+  - kind: ethereum/Runtime
+    startBlock: 2866972 # when the Gravatar contract was deployed
+    options:
+      abi: gravity
+      address: "0xdF52D8385AA79ff50e0f1BDB09FD967dbFA0BF34" # The contract address of the Gravatar on karura testnet
+    assets:
+      gravity:
+        file: "./abis/Gravity.json"
+    mapping:
+      file: "./dist/index.js"
+      handlers:
+        - handler: handleNewGravatar
+          kind: ethereum/LogHandler
+          filter:
+            topics:
+              ## Follows standard log filters https://docs.ethers.io/v5/concepts/events/
+              - NewGravatar(uint256,address,string,string)
+        - handler: handleUpdatedGravatar
+          kind: ethereum/LogHandler
+          filter:
+            topics:
+              ## Follows standard log filters https://docs.ethers.io/v5/concepts/events/
+              - UpdatedGravatar(uint256,address,string,string)
