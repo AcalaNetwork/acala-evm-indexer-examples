@@ -5,7 +5,9 @@ import {
 import { Gravatar } from "../types";
 
 export async function handleNewGravatar(log: NewGravatarLog): Promise<void> {
+  logger.info('--------------------------------------');
   logger.info("New Gravar at block " + log.blockNumber.toString());
+  logger.info('--------------------------------------');
   const gravatar = Gravatar.create({
     id: log.args.id.toHexString(),
     owner: log.args.owner,
@@ -20,7 +22,9 @@ export async function handleNewGravatar(log: NewGravatarLog): Promise<void> {
 export async function handleUpdatedGravatar(
   log: UpdatedGravatarLog
 ): Promise<void> {
+  logger.info('--------------------------------------');
   logger.info("Updated Gravar at block " + log.blockNumber.toString());
+  logger.info('--------------------------------------');
   const id = log.args.id.toHexString();
 
   // We first check if the Gravatar already exists, if not we create it

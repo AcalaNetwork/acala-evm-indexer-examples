@@ -45,6 +45,19 @@ dataSources:
             topics:
               ## Follows standard log filters https://docs.ethers.io/v5/concepts/events/
               - NewGravatar(uint256,address,string,string)
+
+  # ------------------ second datasource ------------------ #
+  - kind: ethereum/Runtime
+    startBlock: 2866972 # when the Gravatar contract was deployed
+    options:
+      abi: gravity
+      address: "0xdF52D8385AA79ff50e0f1BDB09FD967dbFA0BF34" # The contract address of the Gravatar on karura testnet
+    assets:
+      gravity:
+        file: "./abis/Gravity.json"
+    mapping:
+      file: "./dist/index.js"
+      handlers:
         - handler: handleUpdatedGravatar
           kind: ethereum/LogHandler
           filter:
