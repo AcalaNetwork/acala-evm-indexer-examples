@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@acala-network/contracts@^4.4.1":
+  version "4.4.1"
+  resolved "https://registry.npmjs.org/@acala-network/contracts/-/contracts-4.4.1.tgz#23ef1e8f01dc371c83702fc1a5f8f575d47a477f"
+  integrity sha512-v95rc5jAxuUS37GE6i7ahFWNFeIXYEiDVSCrbMz+BPVzKVDTd+65gE4xz6o/iJd8vgB4ihDUoeza8BThqV9PMw==
+
 "@babel/code-frame@^7.0.0":
   version "7.21.4"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.21.4.tgz#d0fa9e4413aca81f2b23b9442797bda1826edb39"

@@ -16,8 +16,13 @@ contract GravatarRegistry {
   mapping (uint => address) public gravatarToOwner;
   mapping (address => uint) public ownerToGravatar;
 
+  constructor() {
+    // Create a dummy gravatar at index 0
+    gravatars.push(Gravatar(address(0x0), " ", " "));
+  }
+
   function createGravatar(string memory _displayName, string memory _imageUrl) public {
-    require(ownerToGravatar[msg.sender] == 0);
+    require(ownerToGravatar[msg.sender] == 0, '<createGravatar> owner already has a gravatar');
     Gravatar memory newGravatar = Gravatar(msg.sender, _displayName, _imageUrl);
     gravatars.push(newGravatar);
     uint id = gravatars.length - 1;
@@ -34,8 +39,8 @@ contract GravatarRegistry {
   }
 
   function updateGravatarName(string memory _displayName) public {
-    require(ownerToGravatar[msg.sender] != 0);
-    require(msg.sender == gravatars[ownerToGravatar[msg.sender]].owner);
+    require(ownerToGravatar[msg.sender] != 0, '<updateGravatarName> sender does not have a gravatar');
+    require(msg.sender == gravatars[ownerToGravatar[msg.sender]].owner, '<updateGravatarName> sender is not the owner');
 
     uint id = ownerToGravatar[msg.sender];
 
@@ -44,8 +49,8 @@ contract GravatarRegistry {
   }
 
   function updateGravatarImage(string memory _imageUrl) public {
-    require(ownerToGravatar[msg.sender] != 0);
-    require(msg.sender == gravatars[ownerToGravatar[msg.sender]].owner);
+    require(ownerToGravatar[msg.sender] != 0, '<updateGravatarImage> sender does not have a gravatar');
+    require(msg.sender == gravatars[ownerToGravatar[msg.sender]].owner, '<updateGravatarImage> sender is not the owner');
 
     uint id = ownerToGravatar[msg.sender];
 

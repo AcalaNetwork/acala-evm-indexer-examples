@@ -16,23 +16,25 @@ schema:
   file: "./schema.graphql"
 
 network:
-  # chainId is the EVM Chain ID, for karura testnet this is 596
-  chainId: '596'
+  # chainId is the EVM Chain ID, for mandala this is 596
+  chainId: '595'
 
   # ETH RPC endpoint (not substrate url!!)
   # all rpc endpoints can be found here: https://evmdocs.acala.network/network/network-configuration
+  endpoint: "wss://eth-rpc-tc9.aca-staging.network"
+
   # use https also works, but wss might be a little faster
-  endpoint: "wss://eth-rpc-karura-testnet.aca-staging.network"
+  # endpoint: "https://eth-rpc-tc9.aca-staging.network"
 
   # TODO: acala dictionary
   # dictionary: "https://gx.api.subquery.network/sq/subquery/eth-dictionary"
 
 dataSources:
   - kind: ethereum/Runtime
-    startBlock: 2866972 # when the Gravatar contract was deployed
+    startBlock: 657634  # when the Gravatar contract was deployed
     options:
       abi: gravity
-      address: "0xdF52D8385AA79ff50e0f1BDB09FD967dbFA0BF34" # The contract address of the Gravatar on karura testnet
+      address: "0x8d385e360e760646d4a26351039e4a22518ce93d" # The contract address of the Gravatar on mandala
     assets:
       gravity:
         file: "./abis/Gravity.json"
@@ -48,10 +50,10 @@ dataSources:
 
   # ------------------ second datasource ------------------ #
   - kind: ethereum/Runtime
-    startBlock: 2866972 # when the Gravatar contract was deployed
+    startBlock: 657634  # when the Gravatar contract was deployed
     options:
       abi: gravity
-      address: "0xdF52D8385AA79ff50e0f1BDB09FD967dbFA0BF34" # The contract address of the Gravatar on karura testnet
+      address: "0x8d385e360e760646d4a26351039e4a22518ce93d" # The contract address of the Gravatar on mandala
     assets:
       gravity:
         file: "./abis/Gravity.json"

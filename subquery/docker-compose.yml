@@ -36,6 +36,8 @@ services:
       - -f=/app
       - --db-schema=app
       - --log-level=debug
+      # can optionally override endpoint here
+      # - --network-endpoint=https://eth-rpc-tc9.aca-staging.network 
     healthcheck:
       test: ["CMD", "curl", "-f", "http://subquery-node:3000/ready"]
       interval: 3s
