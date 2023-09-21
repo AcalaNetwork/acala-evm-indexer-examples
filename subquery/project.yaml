@@ -16,7 +16,7 @@ schema:
   file: "./schema.graphql"
 
 network:
-  # chainId is the EVM Chain ID, for mandala this is 596
+  # chainId is the EVM Chain ID, for mandala this is 595
   chainId: '595'
 
   # ETH RPC endpoint (not substrate url!!)
