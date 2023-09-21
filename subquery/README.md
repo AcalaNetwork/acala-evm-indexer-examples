@@ -1,6 +1,6 @@
 # Acala EVM+ Indexer Example - Subquery
 
-This is a basic example of indexing Acala EVM+ data using subquery. It indexes Gravitars on Karura Testnet from it's logs.
+This is a basic example of indexing Acala EVM+ data using subquery. It indexes Gravitars on mandala testnet from it's logs.
 
 For more documentations please refer to the [subquery evm doc.](https://academy.subquery.network/quickstart/quickstart_chains/ethereum-gravatar.html)
 ## run evm subquery on an already deployed Avatar contract
@@ -21,31 +21,60 @@ yarn start
 
 should see something like this
 ```
-<BlockDispatcherService> INFO Enqueueing blocks 2866972...2867024, total 53 blocks
-<BlockDispatcherService> INFO fetch block [2866972,2867024], total 53 blocks
-<subql-node> INFO Node started on port: 3000
-<sandbox> INFO New Gravar at block 2866974
-<sandbox> INFO New Gravar at block 2867006
-<sandbox> INFO New Gravar at block 2867008
-<sandbox> INFO New Gravar at block 2867010
-<sandbox> INFO Updated Gravar at block 2867015
-<sandbox> INFO Updated Gravar at block 2867017
-<sandbox> INFO Updated Gravar at block 2867019
+<BlockDispatcherService> INFO Enqueueing blocks 657634...657655, total 22 blocks
+<BlockDispatcherService> INFO fetch block [657634,657655], total 22 blocks
+<sandbox> INFO --------------------------------------
+<sandbox> INFO New Gravar at block 657639
+<sandbox> INFO --------------------------------------
+<sandbox> INFO --------------------------------------
+<sandbox> INFO New Gravar at block 657642
+<sandbox> INFO --------------------------------------
+<sandbox> INFO --------------------------------------
+<sandbox> INFO New Gravar at block 657645
+<sandbox> INFO --------------------------------------
+<sandbox> INFO --------------------------------------
+<sandbox> INFO Updated Gravar at block 657649
+<sandbox> INFO --------------------------------------
+<sandbox> INFO --------------------------------------
+<sandbox> INFO Updated Gravar at block 657651
+<sandbox> INFO --------------------------------------
+<sandbox> INFO --------------------------------------
+<sandbox> INFO Updated Gravar at block 657653
+<sandbox> INFO --------------------------------------
 ```
 
-## deploy you own Avatar instance and make your own calls (optional)
+## deploy you own Avatar instance and make your own calls
+Note that subql log handlers will be triggerred once the block is **finalized**, not as soon as it's mined. Usually it's ~10s after the block is mined.
+
 compile the avatar contract
 ```
 yarn compile
 ```
 
-deploy the contract and make a couple calls to it
+deploy the gravitar registry contract to mandala and publish it
 ```
-yarn deploy --network karuraTestnet
+yarn deploy:mandala
+```
 
-## need to publish the contract first
-# and replace the hardcoded contract address in the config and script
-yarn call --network karuraTestnet
+create a couple of gravatars.
+need to first replace the hardcoded contract address in `project.yaml` and `utils.ts`
+```
+yarn create:mandala
+```
+
+update the gravatars
+```
+yarn update:mandala
+```
+
+start subql services and wait for it to index
+```
+yarn build && yarn start
+```
+
+keep updating the gravatars (optional)
+```
+yarn update:mandala
 ```
 
 ## query the data
@@ -77,30 +106,23 @@ result should look like this
         {
           "id": "0x03",
           "owner": "\\x0294350d7cf2c145446358b6461c1610927b3a87",
-          "displayName": "ccccc",
+          "displayName": "yIv1W",
           "imageUrl": "https://example/CCCCC.jpg",
-          "createdBlock": "2867010"
+          "createdBlock": "657645"
         },
         {
           "id": "0x02",
           "owner": "\\x0085560b24769dac4ed057f1b2ae40746aa9aab6",
-          "displayName": "bbbbb",
+          "displayName": "xNZSe",
           "imageUrl": "https://example/BBBBB.jpg",
-          "createdBlock": "2867008"
+          "createdBlock": "657642"
         },
         {
           "id": "0x01",
           "owner": "\\x75e480db528101a381ce68544611c169ad7eb342",
-          "displayName": "aaaaa",
+          "displayName": "8cYyT",
           "imageUrl": "https://example/AAAAA.png",
-          "createdBlock": "2867006"
-        },
-        {
-          "id": "0x00",
-          "owner": "\\x75e480db528101a381ce68544611c169ad7eb342",
-          "displayName": "AAAAA",
-          "imageUrl": "https://example/AAAAA.png",
-          "createdBlock": "2866974"
+          "createdBlock": "657639"
         }
       ]
     }

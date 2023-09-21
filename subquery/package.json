@@ -6,14 +6,19 @@
   "scripts": {
     "compile": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts",
-    "call": "hardhat run scripts/call.ts",
+    "create": "hardhat run scripts/create.ts",
+    "update": "hardhat run scripts/update.ts",
+    "deploy:mandala": "hardhat run scripts/deploy.ts --network mandala",
+    "create:mandala": "hardhat run scripts/create.ts --network mandala",
+    "update:mandala": "hardhat run scripts/update.ts --network mandala",
     "codegen": "subql codegen",
     "build": "yarn codegen && subql build",
-    "start": "docker-compose pull && docker-compose up --remove-orphans"
+    "start": "docker-compose up --remove-orphans"
   },
   "repository": "https://github.com/AcalaNetwork/acala-evm-indexer-examples",
   "license": "MIT",
   "dependencies": {
+    "@acala-network/contracts": "^4.4.1",
     "@subql/common": "latest",
     "@subql/types-ethereum": "latest",
     "@subql/validator": "latest",
