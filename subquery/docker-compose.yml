@@ -9,7 +9,7 @@ services:
     ports:
       - 5432:5432
     # volumes:
-      # - .data/postgres:/var/lib/postgresql/data
+    #   - .data/postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
     healthcheck:
@@ -19,7 +19,7 @@ services:
       retries: 5
 
   subquery-node:
-    image: onfinality/subql-node-ethereum:v2.1.0
+    image: subquerynetwork/subql-node-ethereum:v3.7.0
     depends_on:
       "postgres":
         condition: service_healthy
@@ -35,9 +35,12 @@ services:
     command:
       - -f=/app
       - --db-schema=app
-      - --log-level=debug
+      - --log-level=info
+      - --workers=1
+      - --batch-size=20
       # can optionally override endpoint here
-      # - --network-endpoint=https://eth-rpc-tc9.aca-staging.network 
+      # - --network-endpoint=https://eth-rpc-tc9.aca-staging.network
+
     healthcheck:
       test: ["CMD", "curl", "-f", "http://subquery-node:3000/ready"]
       interval: 3s
@@ -45,7 +48,7 @@ services:
       retries: 10
 
   graphql-engine:
-    image: onfinality/subql-query:latest
+    image: subquerynetwork/subql-query:latest
     ports:
       - 3000:3000
     depends_on:
